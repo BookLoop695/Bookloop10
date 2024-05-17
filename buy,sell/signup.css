@@ -1,0 +1,411 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px;
+
+
+}
+
+#logo img {
+    width: 130px;
+    height: 61px;
+
+
+}
+
+#navbar ul {
+    list-style: none;
+    display: flex;
+    margin-left: 45px;
+    margin-right: 10px;
+}
+
+#navbar ul li {
+    font-size: small;
+    margin-left: 0px;
+    margin-right: 80px;
+    position: relative;
+}
+
+#navbar ul li a {
+    padding: 10px 10px;
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+
+#navbar ul li a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: rgb(27, 193, 99);
+    bottom: 0;
+    left: 0;
+    transition: width 0.5s;
+}
+
+#navbar ul li a:hover::before {
+    width: 100%;
+
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    margin-left: 45px;
+    margin-right: 10px;
+}
+
+.right-items ul {
+    list-style: none;
+    display: flex;
+    margin-left: 45px;
+    margin-right: 10px;
+}
+
+.right-items ul li {
+    margin-left: 20px;
+    right: 10px;
+    top: 10px;
+}
+
+.right-items ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.btn-green {
+    background-color: rgb(27, 193, 99);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+
+}
+
+.btn-green:hover {
+
+    background-color: rgb(19, 140, 73);
+}
+
+.container {
+    max-width: auto;
+    margin: 50px 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    float: center;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    margin-left: 78px;
+    width: 100px;
+    height: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    margin-top: 40px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #00cb18;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0f6300;
+}
+
+.separator {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.separator:before,
+.separator:after {
+    content: "";
+    display: inline-block;
+    width: 45%;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    top: 50%;
+}
+
+.separator:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.separator:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+.social-login {
+    width: 100%;
+    background-color: #3c3030;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin: 10px 20px right;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.social-login:hover {
+    border-color: #999;
+    background-color: #0f6300;
+    /* Change border color on hover */
+}
+
+.social-login img {
+    vertical-align: middle;
+    /* Align the Google logo with text vertically */
+    margin-right: 5px;
+    /* Add margin to separate the logo from text */
+    width: 20px;
+    /* Adjust logo size as needed */
+    height: 20px;
+    /* Adjust logo size as needed */
+}
+
+.password-help {
+    font-size: 10px;
+    font-weight: bold;
+    color: #555;
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 5px);
+    /* Place the criteria list above the password field */
+    left: 0;
+    width: calc(100% - 22px);
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.password-help-button {
+    font-size: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.password-strength-container {
+    margin-top: 4px;
+    height: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    display: none;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.color-labels {
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #555;
+}
+
+.color-label {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.already-have-account {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.already-have-account button {
+    background: none;
+    border: none;
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.show-password-button {
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.show-password-button2 {
+    position: absolute;
+    right: 20px;
+    top: 60%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+/* Adjusted styling for the eye icons */
+.eye-icon {
+    width: 20px;
+}
+
+#confirmPasswordError {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+
+.slideshow-container {
+    max-width: 800px;
+    /* Adjusted width */
+    margin: 150px auto;
+    border: 1px solid #000;
+    position: relative;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    /* Hide overflow for larger images */
+
+}
+
+.mySlides {
+    display: none;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.5s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dot map */
+.dot-container {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s;
+    margin-top: 1px;
+
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Hover effect */
+.dot:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Adjusted styling for the eye icons */
+.eye-icon {
+    width: 20px;
+}

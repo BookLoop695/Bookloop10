@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sign Up - BOOKLOOP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Ensures the background stays behind other content */
+        }
+
+        #background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensure the image covers the entire background */
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            width: auto;
+
+
+        }
+
+        #logo img {
+            width: 110px;
+            height: 61px;
+
+
+        }
+
+        #navbar ul {
+            list-style: none;
+            display: flex;
+            margin-left: 45px;
+            margin-right: 10px;
+        }
+
+        #navbar ul li {
+            font-size: small;
+            margin-left: 0px;
+            margin-right: 80px;
+            position: relative;
+        }
+
+        #navbar ul li a {
+            padding: 10px 10px;
+            text-decoration: none;
+            color: black;
+            position: relative;
+
+        }
+
+        #navbar ul li a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: rgb(27, 193, 99);
+            bottom: 0;
+            left: 0;
+            transition: width 0.5s;
+            margin-top: 30px;
+        }
+
+        #navbar ul li a:hover::before {
+            width: 100%;
+
+        }
+
+        .right-items {
+            display: flex;
+            align-items: center;
+            margin-left: 45px;
+            margin-right: 10px;
+        }
+
+        .right-items ul {
+            list-style: none;
+            display: flex;
+            margin-left: 45px;
+            margin-right: 10px;
+        }
+
+        .right-items ul li {
+            margin-left: 20px;
+            right: 10px;
+            top: 10px;
+        }
+
+        .right-items ul li a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .right-items ul li a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: rgb(27, 193, 99);
+            bottom: 0;
+            left: 0;
+            transition: width 0.5s;
+            margin-top: 30px;
+
+        }
+
+
+        .btn-outline-success {
+            /* Your styles for the button */
+            background-color: #28a745;
+            /* Green color */
+            color: #fff;
+            /* White text color */
+            border-color: #28a745;
+            /* Green border color */
+            /* Add any other styles you want */
+        }
+
+        .btn-outline-success:hover {
+            /* Styles when hovering over the button */
+            background-color: #218838;
+            /* Darker green color */
+            border-color: #1e7e34;
+            /* Darker green border color */
+            /* Add any other hover styles you want */
+        }
+
+
+        .btn-green {
+            background-color: rgb(27, 193, 99);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+
+        }
+
+        .btn-green:hover {
+
+            background-color: rgb(19, 140, 73);
+        }
+
+        /* navigation bar ending */
+
+        .container {
+            max-width: auto;
+            margin: 50px 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            float: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            margin-left: 78px;
+            width: 100px;
+            height: auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 40px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #00cb18;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0f6300;
+        }
+
+        .separator {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .separator:before,
+        .separator:after {
+            content: "";
+            display: inline-block;
+            width: 45%;
+            border-top: 1px solid #ccc;
+            position: absolute;
+            top: 50%;
+        }
+
+        .separator:before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .separator:after {
+            left: 100%;
+            margin-left: 15px;
+        }
+
+        .social-login {
+            width: 100%;
+            background-color: #3c3030;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            margin: 10px 20px right;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-login:hover {
+            border-color: #999;
+            background-color: #0f6300;
+            /* Change border color on hover */
+        }
+
+        .social-login img {
+            vertical-align: middle;
+            /* Align the Google logo with text vertically */
+            margin-right: 5px;
+            /* Add margin to separate the logo from text */
+            width: 20px;
+            /* Adjust logo size as needed */
+            height: 20px;
+            /* Adjust logo size as needed */
+        }
+
+        .password-help {
+            font-size: 10px;
+            font-weight: bold;
+            color: #555;
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 5px);
+            /* Place the criteria list above the password field */
+            left: 0;
+            width: calc(100% - 22px);
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            z-index: 1;
+        }
+
+        .password-help-button {
+            font-size: 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .password-strength-container {
+            margin-top: 4px;
+            height: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .color-labels {
+            position: absolute;
+            bottom: -20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .color-label {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .already-have-account {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .already-have-account button {
+            background: none;
+            border: 3px;
+            border-width: 2px;
+            color: rgb(255, 0, 0);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .already-have-account button:hover {
+            color: #00cb18;
+            transition: 0.5s;
+        }
+
+        .show-password-button {
+            position: absolute;
+            right: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+
+        .show-password-button2 {
+            position: absolute;
+            right: 20px;
+            top: 60%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+
+        /* Adjusted styling for the eye icons */
+        .eye-icon {
+            width: 20px;
+        }
+
+        #confirmPasswordError {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+        }
+
+
+        /* Adjusted styling for the eye icons */
+        .eye-icon {
+            width: 20px;
+        }
+
+        @media screen and (max-width:450px) {
+            #background img {
+            width: 350px;
+            height: 850px;
+            object-fit: cover;
+            
+        }
+        .container {
+            width: 270px;
+            right : 595px;
+
+        }
+
+        }
+
+        @media screen and (max-width:900px) {
+            #background img {
+            width: 800px;
+            height: 1180px;
+            object-fit: cover;
+            
+        }
+        .container {
+            width: 270px;
+            right : 380px;
+            top: 30px;
+
+        }
+
+        #navbar {
+            width: auto;
+
+
+        }
+
+        }
+        @media screen and (max-width:1500px) {
+            #background img {
+            width: 1100px;
+            height: 1180px;
+            object-fit: cover;
+            
+        }
+        .container {
+            width: 270px;
+            right : 250px;
+            top: 30px;
+
+        }
+
+        #navbar {
+            width: 750px;
+
+
+        }
+
+        }
+
+    </style>
+</head>
+
+<body >
+    <div id="background">
+        <img src="backgrnd.jpg">
+    </div>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="BookLoop Logo.png" alt="BookLoop.com">
+        </div>
+
+
+
+
+        <ul>
+            <li class="item"><a href="homepage.html"><i class="fa-solid fa-house"></i>HOME</a></li>
+            <li class="item"><a href="#"><i class="fa-solid fa-user"></i>CONTACTUS</a></li>
+            <li class="item"><a href="#"><i class="fa-solid fa-shop"></i>BUY</a></li>
+            <li class="item"><a href="#"><i class="fa-solid fa-circle-plus"></i> SELL</a></li>
+            
+        </ul>
+
+        <div class="right-items">
+            <ul>
+                <li>
+                    <button id="loginButton" class="btn-green"
+                        onclick="window.location.href = 'login.html';">LOGIN</button>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+    </nav>
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo"><br><br><br><br>
+        <h2>Create Account</h2>
+        <form id="signUp">
+            <input type="text" id="name" name="name" placeholder="Username" required><br>
+            <input type="text" id="email" name="email" placeholder="Email Address" required><br>
+            <div style="position:relative;">
+                <div class="password-help" id="passwordHelp">
+                    <ul id="criteriaList">
+                        <li id="criteriaUppercase">One Uppercase Letter</li>
+                        <li id="criteriaLowercase">One Lowercase Letter</li>
+                        <li id="criteriaSymbol">One Symbol</li>
+                        <li id="criteriaNumber">One Number</li>
+                    </ul>
+                </div>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span class="password-help-button" id="passwordHelpButton" title="Password Help">i</span>
+                <div class="error-message" id="passwordError">Password must meet the specified requirements.</div>
+                <button class="show-password-button" id="showPasswordButton" type="button">
+                    <img class="eye-icon" id="showPasswordIcon" src="eye-close.png" alt="Show Password">
+                </button>
+            </div>
+            <div class="password-strength-container">
+                <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                <div class="color-labels">
+                    <div class="color-label" style="color: red;">Weak</div>
+                    <div class="color-label" style="color: orange;">medium</div>
+                    <div class="color-label" style="color: lightgreen;">Strong</div>
+                    <div class="color-label" style="color: green;">Very Strong</div>
+                </div>
+            </div>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            <button class="show-password-button2" id="showConfirmPasswordButton" type="button">
+                <img class="eye-icon" id="showConfirmPasswordIcon" src="eye-close2.PNG" alt="Show Password">
+            </button>
+            <input type="submit" value="Sign Up" onclick="window.location.href = 'login.html';">
+        </form>
+        <div class="separator">or</div>
+        <div class="social-login">
+            <img src="google.png" alt="Google"> Sign up with Google
+        </div>
+
+        <div class="form-wrapper">
+            <a href="login.html">
+                <div class="already-have-account">
+                    <button>Already have an account?</button>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyCjBatjTOI4t29JhCLR44XcE32qtmVfNrA",
+            authDomain: "bookloop-signup-login.firebaseapp.com",
+            projectId: "bookloop-signup-login",
+            storageBucket: "bookloop-signup-login.appspot.com",
+            messagingSenderId: "456722367228",
+            appId: "1:456722367228:web:112cf4a7dc4dee364ecd79",
+            measurementId: "G-1FLXS838ZD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        let Mainform = document.getElementById('signUp');
+
+        let RegisterUser = evt => {
+            evt.preventDefault();
+
+            let email = document.getElementById('email').value;
+            let name = document.getElementById('name').value;
+            let password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('confirmPassword').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+
+                    set(ref(database, 'users/' + user.uid), {
+                        name: name,
+                        email: email,
+
+                    })
+                    alert('User created');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        };
+        Mainform.addEventListener('submit', RegisterUser);
+    </script>
+    <script src="signup.js"></script>
+</body>
+
+</html>
